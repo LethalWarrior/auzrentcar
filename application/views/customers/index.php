@@ -6,7 +6,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php $this->load->view('layouts/sidebar/front_desk')?>
+    <?php $this->load->view('layouts/sidebar/super')?>
     <!-- End of Sidebar -->
   
     <!-- Content Wrapper -->
@@ -20,10 +20,40 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-            <div class="jumbotron bg-dark text-white">
-                <h1 class="display-3">Assalamu'alaikum!</h1>
-                <p class="lead">Welcome, <?php echo $this->session->userdata('username')?>. You are logged in as <?php echo $this->session->userdata('role_name')?></p>
+            <div class="text-right">
+                <a href="<?php echo site_url('users/create')?>" class="btn btn-primary mb-2"><i class="fa fa-plus"></i> Add User</a>
+            </div>
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 font-weight-bold"><i class="fa fa-user-alt"></i> User List</div>
+                <div class="card-body">
+                    <table class="table table-bordered" id="dataTable" ellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Fullname</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($users as $user):?>
+                            <tr>
+                                <td><?php echo $user->id;?></td>
+                                <td><?php echo $user->fullname;?></td>
+                                <td><?php echo $user->email;?></td>
+                                <td><?php echo $user->role_name;?></td>
+                                <td width="250">
+                                    <a href="<?php echo site_url('users/edit/'.$user->id) ?>"
+                                        class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                    <a onclick="deleteConfirm('<?php echo site_url('users/delete/'.$user->id) ?>')"
+                                        href="#!" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                                </td>
+                            </tr>
+                            <?php endforeach;?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
 
@@ -48,6 +78,17 @@
 
   <!-- Javascripts -->
   <?php $this->load->view('layouts/scripts')?>
+
+  <script>
+      function deleteConfirm(url){
+            $('#btn-delete').attr('href', url);
+            $('#deleteModal').modal();
+        }
+      $(document).ready(function() {
+        $('#dataTable').DataTable({
+        });
+      } );
+  </script>
 
 </body>
 
