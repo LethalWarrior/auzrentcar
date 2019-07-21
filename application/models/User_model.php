@@ -50,7 +50,7 @@ class User_model extends CI_Model {
         $this->fullname = $post["fullname"];
         $this->role_id = $post["role_id"];
         $this->email = $post["email"];
-        $this->password = crypt($post["password"]);
+        $this->password = $post["password"];
         $this->db->insert($this->_table, $this);
     }
 
@@ -61,6 +61,7 @@ class User_model extends CI_Model {
         $this->fullname = $post["fullname"];
         $this->role_id = $post["role_id"];
         $this->email = $post["email"];
+        $this->password =  $post["password"];
         $this->db->update($this->_table, $this, array('id' => $post['id']));
     }
 

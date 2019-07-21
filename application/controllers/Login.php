@@ -21,12 +21,13 @@ class Login extends CI_Controller {
             $data = $validate->row_array();
             $name = $data['fullname'];
             $email = $data['email'];
-            $role = $data['role_id'];
+            $role_id = $data['role_id'];
+            $role = $this->role_model->getById($role_id);
             $sesdata = array(
                 'username' => $name,
                 'email' => $email,
-                'role' => $role,
-                'role_name' => $this->role_model->getById($role)["role_name"],
+                'role_id' => $role->id,
+                'role_name' => $role->role_name,
                 'logged_in' => TRUE
             );
             $this->session->set_userdata($sesdata);

@@ -14,7 +14,7 @@ class Users extends CI_Controller {
         $data["users"] = $this->user_model->getWithRole();
     
         if($this->session->userdata('logged_in') === TRUE) {
-            if($this->session->userdata('role') == 1) $this->load->view('users/index',$data);
+            if($this->session->userdata('role_id') == 1) $this->load->view('users/index',$data);
             else redirect('dashboard');
         } else {
             redirect('login');

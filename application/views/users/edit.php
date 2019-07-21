@@ -54,11 +54,8 @@
                         <div class="form-group col">
                             <label for="inputemail">Email</label>
                             <input type="email" name="email" class="form-control" id="inputemail" placeholder="Enter user's email" value="<?php echo $user->email?>">
-                        </div><!-- 
-                        <div class="form-group col">
-                            <label for="inputpassword">Password</label>
-                            <input type="password" name="password" class="form-control" id="inputpassword" placeholder="Enter user's password">
-                        </div> -->
+                        </div>
+                        <input type="hidden" name="password" class="form-control" id="inputpassword" placeholder="Enter user's password" value="<?php echo $user->password?>">
                     </div>
                     <br>
                     <div class="form-group">

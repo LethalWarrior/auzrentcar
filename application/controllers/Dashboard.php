@@ -10,7 +10,7 @@ class Dashboard extends CI_Controller {
     public function index() {
 
         if($this->session->userdata('logged_in') === TRUE) {
-            switch ($this->session->userdata('role')) {
+            switch ($this->session->userdata('role_id')) {
                 case 1:
                     $this->load->view('dashboard/super');
                     break;
