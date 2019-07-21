@@ -25,6 +25,7 @@ class Login extends CI_Controller {
                 'username' => $name,
                 'email' => $email,
                 'role' => $role,
+                'role_name' => $this->login_model->return_role($role)->row_array()['role_name'],
                 'logged_in' => TRUE
             );
             $this->session->set_userdata($sesdata);

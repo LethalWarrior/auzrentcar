@@ -21,6 +21,8 @@ class Dashboard extends CI_Controller {
                     $this->load->view('dashboard/back_office');
                     break;
             }
+        } else {
+            redirect('login');
         }
 
     }
